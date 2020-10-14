@@ -11,6 +11,9 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductoComponent } from './componentes/producto/producto.component';
+import { DataService } from './services/data.service';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

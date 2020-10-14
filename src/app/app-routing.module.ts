@@ -4,11 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './componentes/home/home.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { ProductoComponent } from './componentes/producto/producto.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home'    , component: HomeComponent },
+  { path: 'home'    , component: HomeComponent, canActivate: [ AuthGuard]  },
   { path: 'registro', component: RegistroComponent },
   { path: 'login'   , component: LoginComponent },
+  { path: 'producto', component: ProductoComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
