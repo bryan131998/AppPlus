@@ -1,11 +1,11 @@
-<div class="mt-3">
+<div class="mt-5">
     <div class="container">
         <div class="wrap-login100 p-t-50 p-b-90">
             <form (ngSubmit)="onSubmit(registroForm)" #registroForm="ngForm" class="login100-form validate-form flex-sb flex-w">
 
-                <span class="login100-form-title p-b-51">
-                    Crear nueva cuenta
-                </span>
+                <span class="mt-4">
+                    <h1>Crear Cuenta Nueva</h1> 
+                  </span>
 
                 <span class="text-danger animated fadeIn" *ngIf="registroForm.submitted && registroForm.controls['email'].errors">
                     El correo es obligatorio
