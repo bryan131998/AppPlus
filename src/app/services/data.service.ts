@@ -1,42 +1,46 @@
-import { Injectable, Injector } from '@angular/core';
-import { Dato } from '../models/datos.model';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+export class Datos  {
+   datos = {
+    nombre: '',
+    precio: '',
+    tipo: '',
+  };
+
+}
 
 @Injectable()
-export class DataService {
-  datos: Dato[];
 
-  constructor(){
-    this.datos = [];
+export class DataService{
+
+  constructor(
+    private firestore: AngularFirestore
+  ) { }
+
+  /**
+   * Metodo para listar todos los productos
+   */
+  getProducto(){
+    return this.firestore.collection('productos').snapshotChanges();
   }
 
-  getDatos(): Dato[] {
-    if (localStorage.getItem('datos') === null) {
-      return this.datos;
-    } else {
-      this.datos = JSON.parse(localStorage.getItem('datos')); // convirtiendo de texto a objeto JSON
-      return this.datos;
-    }
+  /**
+   * crea un producto en firebase
+   * @param producto producto a crear
+   */
+  createProducto(producto: any){
+    return this.firestore.collection('productos').add(producto);
   }
 
-  addDatos(dato: Dato){
-    this.datos.push(dato);
-    let datos: Dato[] = [];
-    if (localStorage.getItem('datos') === null) {
-      datos.push(dato);
-      localStorage.setItem('datos', JSON.stringify(datos));
-    } else {
-      datos = JSON.parse(localStorage.getItem('datos')); 
-      datos.push(dato);
-      localStorage.setItem('datos', JSON.stringify(datos)); // convirtiendo de JSON a cadena de texto
-    }
-  }
+  /**
+   * borrar un producto existente en firebase
+   * @param id id de la coleccion en firebase
+   */
+  deleteProducto(id: any){
+    return this.firestore.collection('productos').doc(id).delete();
 
-  deleteDatos(dato: Dato){
-    for (let i = 0; i < this.datos.length; i++) {
-      if (dato == this.datos[i]) {
-        this.datos.splice(i, 1);
-        localStorage.setItem('datos', JSON.stringify(this.datos));
-      }
-    }
   }
 }

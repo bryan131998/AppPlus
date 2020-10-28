@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-app-clase-98ade": {
+      "hosting": {
+        "shopping-app": [
+          "login-app-clase-98ade"
+        ]
+      }
+    }
+  }
+}

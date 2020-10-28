@@ -8,10 +8,10 @@ import { ProductoComponent } from './componentes/producto/producto.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home'    , component: HomeComponent, canActivate: [ AuthGuard]  },
+  { path: 'home'    , component: HomeComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login'   , component: LoginComponent },
-  { path: 'producto', component: ProductoComponent },
+  { path: 'producto', component: ProductoComponent, canActivate: [ AuthGuard] },
   { path: '**', redirectTo: 'home' }
 ];
 

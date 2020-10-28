@@ -1,17 +1,24 @@
 footer{
     width: 100%;
-    background: #202020;
+    height: 100%;
+    padding: 40px;
+    background: #242a33;
     color: white;   
     bottom: 0%;
+    top: auto;
+    
+    
+    
     
 }
 
 .container-footer-all{
-    width: 100%;
+    width: 50%;
     max-width: 1200px;
     margin: auto;
     padding: 40px;
     bottom: 0%;
+    
 }
 
 .container-body{

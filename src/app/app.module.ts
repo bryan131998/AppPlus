@@ -1,7 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,10 +14,10 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductoComponent } from './componentes/producto/producto.component';
-import { DataService } from './services/data.service';
+import { SidebarComponent } from './componentes/sidebar/sidebar.component';
 
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -23,17 +27,19 @@ import { DataService } from './services/data.service';
     FooterComponent,
     LoginComponent,
     RegistroComponent,
-    ProductoComponent
+    ProductoComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
-
 })
 export class AppModule { }
